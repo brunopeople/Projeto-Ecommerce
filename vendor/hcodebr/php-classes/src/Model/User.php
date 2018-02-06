@@ -30,15 +30,18 @@ const SESSION = "User";
  {
  	$user = new User();
 
- 	$user->setiduser($data["iduser"]);
+ 	$user->setData($data);
 
+  $_SESSION[User::SESSION] = $user->getValues();
+
+ return $user;
 
  }else {
  	throw new \Exception("Usuário inexistente ou senha Inválida");
  	
  	}
   
-  }
+}
 
   public static function verifyLogin($inadmin =true)
   {
@@ -58,12 +61,13 @@ const SESSION = "User";
   
   }
 
-      public static function logout()
-	       {
-		    $_SESSION[User::SESSION] = NULL
+    public static function logout()
+     {
+        $_SESSION[User::SESSION] = NULL;
+  }
+}
 
     
-     }
-   }
-  }
+   
+  
 ?>

@@ -26,14 +26,15 @@ class Model {
 			}
 		}
 
-		public function setData($data);
+	 function setData($data = array())
 
 	{
-		foreach ($data as $key => $value) {
+		foreach ($data as $key => $value)
+		{
 			$this->{"set".$key}($value);
 		}
 	}
-	}
+}
 
 	
 		public function getValues()
@@ -41,6 +42,5 @@ class Model {
 			return $this->values;
 		}
 	}
-}
 
 ?>
