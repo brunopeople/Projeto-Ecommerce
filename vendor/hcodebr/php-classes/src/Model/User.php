@@ -65,6 +65,18 @@ const SESSION = "User";
      {
         $_SESSION[User::SESSION] = NULL;
   }
+
+  public static function listAll(){
+     $sql = new Sql();
+
+    return  $sql ->select("SELECT*FROM tb_user a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
+  }
+
+
+  public function save(){
+    $sql = new Sql();
+    $sql->select
+  }
 }
 
     

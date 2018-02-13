@@ -66,6 +66,67 @@ exit;
 
 });
 
+$app->get("/admin/users", function(){
+
+User::verifyLogin();
+
+$users = User::listAll();
+
+$page = new PageAdmin();
+$page->setTpl("users", array(
+	"users"=>$users
+));
+
+});
+
+$app->get("/admin/users/create", function(){
+
+$page = new PageAdmin();
+
+$page->setTpl("users-create");
+
+});
+
+$app->post("/admin/users/create" ,function(){
+	
+	User::verifyLogin();
+
+	$user = new User();
+
+	$user-> setData($_POST);
+
+});
+
+$app->delete("/admin/users/:iduser/delete", function($iduser){
+
+User::verifyLogin();
+
+});
+
+
+$app->get("/admin/users/:iduser", function($iduser){
+
+User::verifyLogin();
+
+$page = new PageAdmin();
+$page->setTpl("users");
+
+});
+
+$app->get("/admin/users/create", function(){
+
+User::verifyLogin();
+
+});
+
+$app->post("/admin/users/:iduser", function($iduser){
+
+User::verifyLogin();
+
+
+});
+
+
 $app->run();
 
 ?>
